@@ -4,6 +4,10 @@
  * By Marco Merens
  * MIT Licensed.
  */
+/*Update anniversary report*/
+/* by Age, Birthyear*/ 
+/by Jean-Marie Straetemans*/
+
 Module.register("BIRTHDAYS", {
 
 
@@ -33,14 +37,14 @@ Module.register("BIRTHDAYS", {
 			var bdate=new Date(p.birthdate)
 			var bmonth=bdate.getUTCMonth()
 			var bday=bdate.getUTCDate()
+			var byear=bdate.getUTCFullYear()
 			var diff=new Date(thisyear,bmonth,bday).getTime()-today
 			if (diff<0) {
-
-
 				diff=new Date(thisyear+1,bmonth,bday).getTime()-today}
 			p.days=Math.floor(diff/1000/60/60/24)
 			p.date=bday+" "+months[bmonth]
-			
+			p.age=thisyear-byear
+			p.birthyear=byear
 		})
 		this.config.people.sort(function(a,b){return a.days-b.days})
 		
